@@ -1,0 +1,100 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/CorrodedMetal.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.0879872451208733 0.09069136989446532 0.9919845362316413 1.0037335292597431
+  position -0.34033921624406765 -0.6865171498415412 0.21098749802372194
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Shape {
+  appearance CorrodedMetal {
+  }
+  geometry Cylinder {
+    height 0.019
+    radius 0.77
+  }
+}
+Robot {
+  translation 0 0 0.025
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.05 0 0
+      }
+      device [
+        RotationalMotor {
+          name "motor_direita"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05 0 0
+        rotation 0 1 0 1.57
+        children [
+          DEF wheel_direita Shape {
+            appearance PBRAppearance {
+              baseColor 0.960784 0.47451 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        name "solid(1)"
+      }
+    }
+    DEF Body Pose {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0.5 1
+          }
+          geometry Cylinder {
+            height 0.05
+            radius 0.05
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.05 0 0
+      }
+      device [
+        RotationalMotor {
+          name "motor_left"
+        }
+      ]
+      endPoint Solid {
+        translation 0.05 0 0
+        rotation 0 1 0 1.57
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0.960784 0.47451 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE wheel
+        physics DEF wheel_physics Physics {
+        }
+      }
+    }
+  ]
+  name "MX0"
+  boundingObject USE Body
+  physics Physics {
+  }
+}
