@@ -7,8 +7,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.0879872451208733 0.09069136989446532 0.9919845362316413 1.0037335292597431
-  position -0.34033921624406765 -0.6865171498415412 0.21098749802372194
+  orientation 0.13358855831609984 -0.011887289046060881 -0.9909655843903769 3.5666461010498356
+  position 1.9120437095798222 -0.3079688745960846 0.8496411552883403
 }
 TexturedBackground {
 }
@@ -23,20 +23,25 @@ Shape {
   }
 }
 Robot {
-  translation 0 0 0.025
+  translation 0 0 0.05
+  rotation 0 0 1 1.7
   children [
     HingeJoint {
       jointParameters HingeJointParameters {
+        position 72.89059620222974
         anchor -0.05 0 0
       }
       device [
+        PositionSensor {
+          name "encoder_left"
+        }
         RotationalMotor {
-          name "motor_direita"
+          name "motor_left"
         }
       ]
       endPoint Solid {
-        translation -0.05 0 0
-        rotation 0 1 0 1.57
+        translation -0.04999954940226955 6.810481509292587e-07 5.791955401881984e-07
+        rotation 0.6891087850215734 -0.22587714114734386 0.6885554440371481 3.5862337560954805
         children [
           DEF wheel_direita Shape {
             appearance PBRAppearance {
@@ -44,11 +49,14 @@ Robot {
             }
             geometry Cylinder {
               height 0.01
-              radius 0.025
+              radius 0.03
             }
           }
         ]
         name "solid(1)"
+        boundingObject USE wheel_direita
+        physics DEF wheel_physics Physics {
+        }
       }
     }
     DEF Body Pose {
@@ -66,16 +74,20 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
+        position 72.89059611285464
         anchor 0.05 0 0
       }
       device [
+        PositionSensor {
+          name "encoder_right"
+        }
         RotationalMotor {
-          name "motor_left"
+          name "motor_direita"
         }
       ]
       endPoint Solid {
-        translation 0.05 0 0
-        rotation 0 1 0 1.57
+        translation 0.050000449468013734 4.1701244895481237e-07 4.486904171413175e-07
+        rotation 0.6891087903895501 -0.225877108590555 0.6885554493449468 3.5862336950520777
         children [
           DEF wheel Shape {
             appearance PBRAppearance {
@@ -83,7 +95,7 @@ Robot {
             }
             geometry Cylinder {
               height 0.01
-              radius 0.025
+              radius 0.03
             }
           }
         ]
@@ -97,4 +109,16 @@ Robot {
   boundingObject USE Body
   physics Physics {
   }
+  controller "MXO_main"
+}
+Solid {
+  children [
+    DEF arena Shape {
+      geometry Cylinder {
+        height 0.019
+        radius 0.77
+      }
+    }
+  ]
+  boundingObject USE arena
 }
