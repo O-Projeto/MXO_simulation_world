@@ -7,8 +7,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.13358855831609984 -0.011887289046060881 -0.9909655843903769 3.5666461010498356
-  position 1.9120437095798222 -0.3079688745960846 0.8496411552883403
+  orientation 0.06345894122332348 -0.0569482910179131 -0.9963582964621482 3.7532308126214016
+  position 0.664436626170119 -0.3424962872567602 0.28932349392900353
 }
 TexturedBackground {
 }
@@ -23,12 +23,15 @@ Shape {
   }
 }
 Robot {
-  translation 0 0 0.05
-  rotation 0 0 1 1.7
+  translation -0.008864663704457995 -0.012443828026216373 0.03904946374200927
+  rotation -0.00016782855359855292 0.0005431117476638964 -0.99999983843159 2.5426333885650005
   children [
+    InertialUnit {
+      name "IMU"
+    }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 72.89059620222974
+        position 832.7074334433324
         anchor -0.05 0 0
       }
       device [
@@ -40,8 +43,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation -0.04999954940226955 6.810481509292587e-07 5.791955401881984e-07
-        rotation 0.6891087850215734 -0.22587714114734386 0.6885554440371481 3.5862337560954805
+        translation -0.04999954940226955 8.648582461319654e-07 2.2652653653733794e-07
+        rotation -0.7058685834394799 0.06556304520200684 -0.70530208422844 3.010551654668904
         children [
           DEF wheel_direita Shape {
             appearance PBRAppearance {
@@ -57,6 +60,8 @@ Robot {
         boundingObject USE wheel_direita
         physics DEF wheel_physics Physics {
         }
+        linearVelocity -0.08808987116711471 0.1489241270942987 6.871061819339472e-05
+        angularVelocity -5.460150114358971 -3.109898271106001 3.5527483713884105
       }
     }
     DEF Body Pose {
@@ -74,7 +79,7 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 72.89059611285464
+        position -634.1232680378627
         anchor 0.05 0 0
       }
       device [
@@ -86,8 +91,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0.050000449468013734 4.1701244895481237e-07 4.486904171413175e-07
-        rotation 0.6891087903895501 -0.225877108590555 0.6885554493449468 3.5862336950520777
+        translation 0.050000449468013734 -4.814778583867558e-07 -3.7868396440969335e-07
+        rotation 0.23073916861172802 0.9453060297385566 0.2305557334101576 1.6262113550164095
         children [
           DEF wheel Shape {
             appearance PBRAppearance {
@@ -102,6 +107,8 @@ Robot {
         boundingObject USE wheel
         physics DEF wheel_physics Physics {
         }
+        linearVelocity 0.0877040141694137 -0.14886607261706847 -3.300956533809818e-05
+        angularVelocity 5.458643067452169 3.1067600678963485 3.55234353894887
       }
     }
   ]
@@ -110,6 +117,8 @@ Robot {
   physics Physics {
   }
   controller "MXO_main"
+  linearVelocity -0.0001936158726298522 2.838685763800146e-05 1.3518737777936664e-05
+  angularVelocity -0.0006834794746975281 -0.0017129798923631893 3.3836075843848206
 }
 Solid {
   children [
